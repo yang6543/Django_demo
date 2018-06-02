@@ -159,6 +159,50 @@ body {
                         }
                     }
                 }
+
+                .page-control-group {
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    // 底部
+                    bottom: 20px;
+
+                    .page-control {
+                        // 需要设置宽度、高度，
+                        // 居中才会生效
+                        margin: 0 auto;
+                        overflow: hidden;
+                        // 4个li标签自身宽度
+                        // 1个li标签距离左边距离(8)
+                        // 1个li标签距离右边距离(8)
+                        // 4个li标签之间的距离(16*3)
+                        width: 12*4px + 8*2px + 16*3px;
+
+                        li {
+                            width: 12px;
+                            height: 12px;
+                            // 边框1px立体
+                            border: 1px solid #fff;
+                            // 弧度
+                            border-radius: 50%;
+                            float: left;
+                            // 上下0，左右8px间距
+                            margin: 0 8px;
+                            // content-box(默认)
+                            // 宽度=元素本身宽度+边框宽度*2
+                            // border-box
+                            // 宽度=元素本身宽度(边框会缩放到元素中间)
+                            // li标签就不会因为距离不够跑到下一行了
+                            box-sizing: border-box;
+                            cursor: pointer;
+
+                            // &父标签(li)
+                            &.active {
+                                background: #fff;
+                            }
+                        }
+                    }
+                }
             }
         }
 
