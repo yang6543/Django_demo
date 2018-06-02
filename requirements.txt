@@ -1,0 +1,2 @@
+virtualenv==15.2.0
+virtualenvwrapper-win==1.2.5
