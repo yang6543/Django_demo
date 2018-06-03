@@ -101,6 +101,7 @@ Banner.prototype.loop = function () {
         // 故index=bannerCount+1
         if(self.index >= self.bannerCount+1){
             // 此时第一张前是最后一张,
+            // 相对于父标签
             // 故宽度为-798
             self.bannerUl.css({"left": -self.bannerWidth});
             // index为2,执行animate才会
@@ -134,6 +135,7 @@ Banner.prototype.listenBannerHover = function () {
     });
 };
 
+// 监听箭头点击事件
 Banner.prototype.listenArrowClick = function () {
     var self = this;
     this.leftArrow.click(function () {
@@ -141,6 +143,7 @@ Banner.prototype.listenArrowClick = function () {
         // 内容一致就会返回true)
         // ===: 1 === 1(类型和内容均要保持一致)
         if(self.index === 0){
+            self.bannerUl.css({"left": -self.bannerCount*self.bannerWidth});
             self.index = self.bannerCount-1;
         }else{
             self.index--;
@@ -148,8 +151,9 @@ Banner.prototype.listenArrowClick = function () {
         self.animate();
     });
     this.rightArrow.click(function () {
-        if(self.index === self.bannerCount-1){
-            self.index = 0;
+        if(self.index === self.bannerCount+1){
+            self.bannerUl.css({"left": -self.bannerWidth});
+            self.index = 2;
         }else{
             self.index++;
         }
