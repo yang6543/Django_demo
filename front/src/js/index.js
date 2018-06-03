@@ -20,6 +20,7 @@
 // banner.greet("carl");
 
 function Banner() {
+    this.bannerWidth = 798;
     this.bannerGroup = $("#banner-group");
     this.index = 0;
     this.leftArrow = $(".left-arrow");
@@ -31,6 +32,28 @@ function Banner() {
     this.bannerCount = this.liList.length;
     this.listenBannerHover();
 }
+
+// 初始化banner
+Banner.prototype.initBanner = function () {
+    // 给css添加样式
+    this.bannerUl.css({"width": this.bannerWidth*this.bannerCount});
+};
+
+// 初始化圆点
+Banner.prototype.initPageControl = function () {
+    var pageControl = $(".page-control");
+    // 遍历所有的banner
+    for(var i=0; i<this.bannerCount; i++){
+        // 通过遍历banner自动创建li标签个数
+        var circle = $("<li></li>");
+        pageControl.append(circle);
+        if(i === 0){
+            // 默认让第一个圆点处于活动状态
+            circle.addClass("active");
+        }
+    }
+    pageControl.css({"width": this.bannerCount*12+8*2+(this.bannerCount-1)*16});
+};
 
 // toggle显示或隐藏
 Banner.prototype.toggleArrow = function (isShow) {
@@ -78,7 +101,7 @@ Banner.prototype.loop = function () {
     // animate有个过渡过程,时间为2000ms
     // setInterval定时器
     this.timer = setInterval(function () {
-        if(self.index >= 3){
+        if(self.index >= self.bannerCount-1){
             self.index = 0;
         }else{
             self.index++;
@@ -94,14 +117,14 @@ Banner.prototype.listenArrowClick = function () {
         // 内容一致就会返回true)
         // ===: 1 === 1(类型和内容均要保持一致)
         if(self.index === 0){
-            self.index = self.bannerCount - 1;
+            self.index = self.bannerCount-1;
         }else{
             self.index--;
         }
         self.animate();
     });
     this.rightArrow.click(function () {
-        if(self.index === self.bannerCount - 1){
+        if(self.index === self.bannerCount-1){
             self.index = 0;
         }else{
             self.index++;
@@ -111,6 +134,8 @@ Banner.prototype.listenArrowClick = function () {
 };
 
 Banner.prototype.run = function () {
+    this.initBanner();
+    this.initPageControl();
     this.loop();
     this.listenArrowClick();
 };
