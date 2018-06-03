@@ -30,7 +30,7 @@ function Banner() {
     this.liList = this.bannerUl.children("li");
     // 获取li标签个数
     this.bannerCount = this.liList.length;
-    this.listenBannerHover();
+    this.pageControl = $(".page-control");
 }
 
 // 初始化banner
@@ -41,18 +41,17 @@ Banner.prototype.initBanner = function () {
 
 // 初始化圆点
 Banner.prototype.initPageControl = function () {
-    var pageControl = $(".page-control");
     // 遍历所有的banner
     for(var i=0; i<this.bannerCount; i++){
         // 通过遍历banner自动创建li标签个数
         var circle = $("<li></li>");
-        pageControl.append(circle);
+        this.pageControl.append(circle);
         if(i === 0){
             // 默认让第一个圆点处于活动状态
             circle.addClass("active");
         }
     }
-    pageControl.css({"width": this.bannerCount*12+8*2+(this.bannerCount-1)*16});
+    this.pageControl.css({"width": this.bannerCount*12+8*2+(this.bannerCount-1)*16});
 };
 
 // toggle显示或隐藏
@@ -65,6 +64,29 @@ Banner.prototype.toggleArrow = function (isShow) {
         self.leftArrow.hide();
         self.rightArrow.hide();
     }
+};
+
+Banner.prototype.animate = function () {
+    this.bannerUl.animate({"left": -798*this.index}, 500);
+    // eq方法是获取到的当前第几个li标签
+    this.pageControl.children("li").eq(this.index).addClass("active").siblings().removeClass("active");
+};
+
+// 轮播方法
+Banner.prototype.loop = function () {
+    var self = this;
+    // css没有过渡过程,一步到位
+    // bannerUl.css({"left": -798});
+    // animate有个过渡过程,时间为2000ms
+    // setInterval定时器
+    this.timer = setInterval(function () {
+        if(self.index >= self.bannerCount-1){
+            self.index = 0;
+        }else{
+            self.index++;
+        }
+        self.animate();
+    }, 2000);
 };
 
 // 监听bannerhover事件方法
@@ -86,28 +108,6 @@ Banner.prototype.listenBannerHover = function () {
         self.toggleArrow(false);
         self.loop();
     });
-};
-
-Banner.prototype.animate = function () {
-    var self = this;
-    this.bannerUl.animate({"left": -798*self.index}, 500);
-};
-
-// 轮播方法
-Banner.prototype.loop = function () {
-    var self = this;
-    // css没有过渡过程,一步到位
-    // bannerUl.css({"left": -798});
-    // animate有个过渡过程,时间为2000ms
-    // setInterval定时器
-    this.timer = setInterval(function () {
-        if(self.index >= self.bannerCount-1){
-            self.index = 0;
-        }else{
-            self.index++;
-        }
-        self.animate();
-    }, 2000);
 };
 
 Banner.prototype.listenArrowClick = function () {
@@ -133,11 +133,30 @@ Banner.prototype.listenArrowClick = function () {
     });
 };
 
+Banner.prototype.listenPageControl = function () {
+    var self = this;
+    // 获取pageControl下的子节点li元素
+    // 再通过each方法遍历它
+    // 将其下标index(即点击第几个圆点-1)和对象传进去
+    this.pageControl.children("li").each(function (index, obj) {
+        // 将js对象(obj)封装成jq对象
+        $(obj).click(function () {
+            self.index = index;
+            self.animate();
+            // 通过obj对象添加active
+            // 并找到兄弟元素再移除active状态
+            // $(obj).addClass("active").siblings().removeClass("active");
+        });
+    });
+};
+
 Banner.prototype.run = function () {
     this.initBanner();
     this.initPageControl();
     this.loop();
+    this.listenBannerHover();
     this.listenArrowClick();
+    this.listenPageControl();
 };
 
 // 页面加载完成后在执行函数内的代码

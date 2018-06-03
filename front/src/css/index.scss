@@ -21,6 +21,8 @@ body {
     right: 0;
     // 透明度opacity
     //opacity: 0.5;
+    // 可以将内容置于头部下方
+    z-index: 100;
 
     .container {
         width: $pageWidth;
@@ -118,6 +120,9 @@ body {
                 background: aqua;
                 // 相对定位(不指定默认为static定位)
                 position: relative;
+                // 超过banner区域的内容将其隐藏
+                overflow: hidden;
+                z-index: 0;
 
                 .arrow {
                     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
