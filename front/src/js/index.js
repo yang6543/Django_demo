@@ -22,7 +22,7 @@
 function Banner() {
     this.bannerWidth = 798;
     this.bannerGroup = $("#banner-group");
-    this.index = 0;
+    this.index = 1;
     this.leftArrow = $(".left-arrow");
     this.rightArrow = $(".right-arrow");
     this.bannerUl = $("#banner-ul");
@@ -35,8 +35,16 @@ function Banner() {
 
 // 初始化banner
 Banner.prototype.initBanner = function () {
+    // 克隆第一张和最后一张banner
+    var firstBanner = this.liList.eq(0).clone();
+    var lastBanner = this.liList.eq(this.bannerCount-1).clone();
+    this.bannerUl.append(firstBanner);
+    // 将最后一张banner添加到第一张banner前
+    this.bannerUl.prepend(lastBanner);
     // 给css添加样式
-    this.bannerUl.css({"width": this.bannerWidth*this.bannerCount});
+    // 因为第一张banner前有最后一张banner
+    // 故left为-this.bannerWidth(-798)
+    this.bannerUl.css({"width": this.bannerWidth*(this.bannerCount+2), "left": -this.bannerWidth});
 };
 
 // 初始化圆点
@@ -68,8 +76,16 @@ Banner.prototype.toggleArrow = function (isShow) {
 
 Banner.prototype.animate = function () {
     this.bannerUl.animate({"left": -798*this.index}, 500);
+    var index = this.index;
+    if(index === 0){
+        index = this.bannerCount-1;
+    }else if(index === this.bannerCount+1){
+        index = 0;
+    }else{
+        index = this.index-1;
+    }
     // eq方法是获取到的当前第几个li标签
-    this.pageControl.children("li").eq(this.index).addClass("active").siblings().removeClass("active");
+    this.pageControl.children("li").eq(index).addClass("active").siblings().removeClass("active");
 };
 
 // 轮播方法
@@ -80,8 +96,16 @@ Banner.prototype.loop = function () {
     // animate有个过渡过程,时间为2000ms
     // setInterval定时器
     this.timer = setInterval(function () {
-        if(self.index >= self.bannerCount-1){
-            self.index = 0;
+        // bannerCount在第一张和最后一张克隆之后
+        // 还是保持之前的banner张数,
+        // 故index=bannerCount+1
+        if(self.index >= self.bannerCount+1){
+            // 此时第一张前是最后一张,
+            // 故宽度为-798
+            self.bannerUl.css({"left": -self.bannerWidth});
+            // index为2,执行animate才会
+            // 从当前位置轮播到下一张
+            self.index = 2;
         }else{
             self.index++;
         }
