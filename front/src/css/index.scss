@@ -314,6 +314,25 @@ body {
                         }
                     }
                 }
+
+                .load-more-group {
+                    padding: 20px 0;
+                    // 外面盒子包含行内元素
+                    // (button),行内元素要居中
+                    // 外面盒子就要添加text-align
+                    text-align: center;
+                    .load-more {
+                        width: 402px;
+                        height: 40px;
+                        background: #d2dcea;
+                        color: #6d85ac;
+                        border: none;
+                        // 鼠标点击就不会
+                        // 出现蓝色边框
+                        outline: none;
+                        cursor: pointer;
+                    }
+                }
             }
         }
 
