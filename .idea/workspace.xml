@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6ea3612-f781-47f5-91b5-6a8930b9a121" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/front/src/css/body.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/css/footer.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/css/header.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/src/css/news_detail.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/templates/news/news_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/dist/css/index.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/dist/css/index.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/dist/js/index.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/dist/js/index.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/css/constants.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/css/constants.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/src/css/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/css/index.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/src/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/src/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/templates/news/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/templates/news/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -86,22 +75,32 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="news_detail.scss" pinned="false" current-in-tab="true">
+          <file leaf-file-name="news_detail.scss" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/front/src/css/news_detail.scss">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="407">
-                  <caret line="166" lean-forward="true" selection-start-line="166" selection-end-line="166" />
+                <state relative-caret-position="-238">
+                  <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
                   <folding>
-                    <element signature="e#179#387#0" />
                     <element signature="e#236#373#0" />
                     <element signature="e#418#458#0" />
+                    <element signature="e#2148#2188#0" />
                     <element signature="e#2513#2553#0" />
                     <element signature="e#2670#3108#0" />
                     <element signature="e#3150#3198#0" />
                     <element signature="e#3400#3440#0" />
                     <element signature="e#3489#3529#0" />
+                    <element signature="e#3956#4004#0" />
                     <element signature="e#4021#4077#0" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/front/src/js/index.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="378">
+                  <caret line="173" column="38" selection-start-line="173" selection-start-column="38" selection-end-line="173" selection-end-column="38" />
                 </state>
               </provider>
             </entry>
@@ -132,13 +131,13 @@
         <option value="$PROJECT_DIR$/front/gulpfile.js" />
         <option value="$PROJECT_DIR$/front/src/css/header.scss" />
         <option value="$PROJECT_DIR$/front/src/css/footer.scss" />
-        <option value="$PROJECT_DIR$/front/src/js/index.js" />
         <option value="$PROJECT_DIR$/front/templates/news/index.html" />
         <option value="$PROJECT_DIR$/front/src/css/constants.scss" />
         <option value="$PROJECT_DIR$/front/src/css/index.scss" />
         <option value="$PROJECT_DIR$/front/src/css/body.scss" />
         <option value="$PROJECT_DIR$/front/src/css/news_detail.scss" />
         <option value="$PROJECT_DIR$/front/templates/news/news_detail.html" />
+        <option value="$PROJECT_DIR$/front/src/js/index.js" />
       </list>
     </option>
   </component>
@@ -294,7 +293,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="609" y="120" width="1331" height="812" extended-state="0" />
+    <frame x="204" y="128" width="1331" height="812" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -628,13 +627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front/src/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-155">
-          <caret line="171" column="33" lean-forward="true" selection-start-line="171" selection-start-column="33" selection-end-line="171" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front/templates/news/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="297">
@@ -726,19 +718,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/front/src/css/news_detail.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="166" lean-forward="true" selection-start-line="166" selection-end-line="166" />
+        <state relative-caret-position="-238">
+          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
           <folding>
-            <element signature="e#179#387#0" />
             <element signature="e#236#373#0" />
             <element signature="e#418#458#0" />
+            <element signature="e#2148#2188#0" />
             <element signature="e#2513#2553#0" />
             <element signature="e#2670#3108#0" />
             <element signature="e#3150#3198#0" />
             <element signature="e#3400#3440#0" />
             <element signature="e#3489#3529#0" />
+            <element signature="e#3956#4004#0" />
             <element signature="e#4021#4077#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/front/src/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="173" column="38" selection-start-line="173" selection-start-column="38" selection-end-line="173" selection-end-column="38" />
         </state>
       </provider>
     </entry>

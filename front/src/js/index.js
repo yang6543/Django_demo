@@ -169,6 +169,9 @@ Banner.prototype.listenPageControl = function () {
     this.pageControl.children("li").each(function (index, obj) {
         // 将js对象(obj)封装成jq对象
         $(obj).click(function () {
+            // 加了无限循环轮播,此时banner
+            // 前后各克隆并添加了一张banner
+            // 故此时self.index = index+1
             self.index = index+1;
             self.animate();
             // 通过obj对象添加active
