@@ -169,7 +169,7 @@ Banner.prototype.listenPageControl = function () {
     this.pageControl.children("li").each(function (index, obj) {
         // 将js对象(obj)封装成jq对象
         $(obj).click(function () {
-            self.index = index;
+            self.index = index+1;
             self.animate();
             // 通过obj对象添加active
             // 并找到兄弟元素再移除active状态
