@@ -1,0 +1,52 @@
+@import "../common/constants.scss";
+
+
+.main {
+    margin-top: 64px;
+
+    .course-nav {
+        $courseNavHeight: 54px;
+        width: 100%;
+        // course-nav设置了高度
+        // 就不需要清除浮动
+        height: $courseNavHeight;
+        // 盒子阴影水平0,垂直10,模糊程度5,
+        // rgba:r红,g绿,b蓝,a透明度
+        // rgb(0,0,0)纯黑色,rgb(255,255,255)白色
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+
+        .nav-container {
+            width: $pageWidth;
+            height: $courseNavHeight;
+            margin: 0 auto;
+            line-height: $courseNavHeight;
+
+            .title {
+                float: left;
+                color: #696969;
+                font-size: 24px;
+            }
+
+            .nav-list {
+                float: left;
+                margin-left: 100px;
+
+                li {
+                    float: left;
+                    margin-right: 40px;
+
+                    a {
+                        color: #888;
+                    }
+
+                    &.active {
+
+                        a {
+                            color: $mainFontColor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

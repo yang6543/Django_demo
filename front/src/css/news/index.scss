@@ -1,9 +1,9 @@
 // 导入init.scss
-@import "init.scss";
-@import "constants.scss";
-@import "header.scss";
-@import "body.scss";
-@import "footer.scss";
+@import "../common/init.scss";
+@import "../common/constants.scss";
+@import "../common/header.scss";
+@import "../common/body.scss";
+@import "../common/footer.scss";
 
 
 .main {

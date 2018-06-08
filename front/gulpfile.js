@@ -25,7 +25,7 @@ var sourcemaps = require("gulp-sourcemaps");
 var path = {
     // **表示templates下有多个目录
     'html': './templates/**/',
-    'css': './src/css/',
+    'css': './src/css/**/',
     'js': './src/js/',
     'images': './src/images/',
     'css_dist': './dist/css/',
