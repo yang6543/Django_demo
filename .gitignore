@@ -1,5 +1,17 @@
 # 以下是忽略的文件及内容
-# 忽略.idea文件
-/.idea
+
+# PyCharm
+.idea
+.iml
+
 # 忽略__pycache__文件
 __pycache__/
+*.py[cod]
+
+# packaging
+env/
+dist/
+
+
+migrations/
+!migrations/__init__.py
