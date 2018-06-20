@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'apps.cpauth',
     'apps.cms',
     'apps.news'
 ]
@@ -110,6 +111,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# 用户模型：cpauth下面models的User
+AUTH_USER_MODEL = 'cpauth.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
