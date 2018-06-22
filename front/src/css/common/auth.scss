@@ -13,10 +13,11 @@ body {
     right: 0;
     top: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.7);
     // 纵轴溢出,显示滚动条
     overflow-y: scroll;
     display: none;
+    z-index: 100;
 
     .auth-wrapper {
         $authWrapperHeight: 520px;
@@ -24,7 +25,14 @@ body {
         width: $authWrapperWidth;
         height: $authWrapperHeight;
         //background: #fff;
-        margin: 40px auto;
+        //margin: 40px auto;
+        position: absolute;
+        // 距离顶部一半
+        top: 50%;
+        left: 50%;
+        // 在50%基础上居中
+        margin-left: -$authWrapperWidth/2;
+        margin-top: -$authWrapperHeight/2;
 
         .close-wrapper {
             width: 100%;

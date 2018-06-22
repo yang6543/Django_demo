@@ -102,4 +102,7 @@ gulp.task("bs", function () {
 
 // 创建一个默认的任务
 // 执行默认任务前，首先要执行bs,watch任务
-gulp.task("default", ["bs", "watch"]);
+// gulp.task("default", ["bs", "watch"]);
+// 终端监听并执行相应任务，不会是之前监听并在
+// 客户端(浏览器)bs执行相应任务
+gulp.task("default", ["watch"]);
