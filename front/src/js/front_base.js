@@ -1,3 +1,25 @@
+// 用来处理导航条
+function FrontBase() {
+
+}
+
+FrontBase.prototype.run = function () {
+    var self = this;
+    self.listenAuthBoxHover();
+};
+
+FrontBase.prototype.listenAuthBoxHover = function () {
+    var authBox = $(".auth-box");
+    var userMoreBox = $(".user-more-box");
+    // 移上去显示hover事件，
+    // 移除隐藏hover事件
+    authBox.hover(function () {
+        userMoreBox.show();
+    },function () {
+        userMoreBox.hide();
+    });
+};
+
 // 点击登录按钮,弹出模态对话框
 // $(function () {
 //     $("#btn").click(function () {
@@ -9,6 +31,7 @@
 //     });
 // });
 
+// 用来处理登录和注册
 // 构造函数
 function Auth() {
     var self = this;
@@ -21,6 +44,7 @@ Auth.prototype.run = function () {
     self.listenShowHideEvent();
     self.listenSwitchEvent();
     self.listenSigninEvent();
+    self.listenImgCaptchaEvent();
 };
 
 Auth.prototype.showEvent = function () {
@@ -66,6 +90,16 @@ Auth.prototype.listenSwitchEvent = function () {
         }else{
             self.scrollWrapper.animate({"left": "-400px"});
         }
+    });
+};
+
+Auth.prototype.listenImgCaptchaEvent = function () {
+    var imgCaptcha = $(".img-captcha");
+    imgCaptcha.click(function () {
+        // 点击图形验证码，
+        // 每次/account/img_captcha/?random=xxx不一样
+        // 就可以获取不同的验证码
+        imgCaptcha.attr("src", "/account/img_captcha/"+"?random="+Math.random());
     });
 };
 
@@ -122,4 +156,10 @@ Auth.prototype.listenSigninEvent = function () {
 $(function () {
     var auth = new Auth();
     auth.run();
+});
+
+
+$(function () {
+    var frontBase = new FrontBase();
+    frontBase.run();
 });

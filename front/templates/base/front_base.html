@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="//at.alicdn.com/t/font_687968_2kjgxig9lrztzkt9.css">
     <link rel="stylesheet" href="{% static 'css/common/auth.min.css' %}">
     <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/message.min.js' %}"></script>
     <script src="{% static 'js/cpajax.min.js' %}"></script>
-    <script src="{% static 'js/auth.min.js' %}"></script>
+    <script src="{% static 'js/front_base.min.js' %}"></script>
     {% block head %}{% endblock %}
 </head>
 <body>
@@ -26,8 +27,17 @@
 
             <div class="auth-box">
                 <i class="icon-person iconfont"></i>
-                <a href="#" class="signin-btn">登录</a>&nbsp;/
-                <a href="#" class="signup-btn">注册</a>
+                {% if user.is_authenticated %}
+                    <a href="#" class="authenticated-box">{{ user.username }}</a>
+                    <div class="user-more-box">
+                        <i class="triangle"></i>
+                        <a href="#">管理系统</a>
+                        <a href="{% url 'cpauth:logout' %}">退出登录</a>
+                    </div>
+                {% else %}
+                    <a href="#" class="signin-btn">登录</a>&nbsp;/
+                    <a href="#" class="signup-btn">注册</a>
+                {% endif %}
             </div>
         </div>
     </header>
@@ -71,77 +81,77 @@
         </div>
     </footer>
 <div class="mask-wrapper">
-        <div class="auth-wrapper">
-            <div class="close-wrapper">
-                <span class="close-btn icon-close iconfont"></span>
-            </div>
-            <div class="auth-inner-wrapper">
-                <div class="scroll-wrapper">
-                    <div class="signin-group auth-group">
-                        <div class="top-group">
-                            <span class="title">请登录</span>
-                            <!-- javascript: void(0);点击a标签不跳转 -->
-                            <a href="javascript: void(0);" class="switch">立即注册</a>
+    <div class="auth-wrapper">
+        <div class="close-wrapper">
+            <span class="close-btn icon-close iconfont"></span>
+        </div>
+        <div class="auth-inner-wrapper">
+            <div class="scroll-wrapper">
+                <div class="signin-group auth-group">
+                    <div class="top-group">
+                        <span class="title">请登录</span>
+                        <!-- javascript: void(0);点击a标签不跳转 -->
+                        <a href="javascript: void(0);" class="switch">立即注册</a>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="telephone" placeholder="请输入手机号码">
                         </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="telephone" placeholder="请输入手机号码">
-                            </div>
-                            <div class="input-group">
-                                <input type="password" class="form-control" name="password" placeholder="请输入密码">
-                            </div>
-                            <div class="input-group">
-                                <label class="remember-label">
-                                    <input type="checkbox" name="remember" value="1">&nbsp;记住我
-                                </label>
-                            </div>
-                            <div class="input-group">
-                                <input type="submit" class="submit-btn" value="立即登录">
-                            </div>
+                        <div class="input-group">
+                            <input type="password" class="form-control" name="password" placeholder="请输入密码">
+                        </div>
+                        <div class="input-group">
+                            <label class="remember-label">
+                                <input type="checkbox" name="remember" value="1">&nbsp;记住我
+                            </label>
+                        </div>
+                        <div class="input-group">
+                            <input type="submit" class="submit-btn" value="立即登录">
                         </div>
                     </div>
-                    <div class="signup-group auth-group">
-                        <div class="top-group">
-                            <span class="title">请注册</span>
-                            <a href="javascript: void(0);" class="switch">立即登录</a>
+                </div>
+                <div class="signup-group auth-group">
+                    <div class="top-group">
+                        <span class="title">请注册</span>
+                        <a href="javascript: void(0);" class="switch">立即登录</a>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="telephone" placeholder="手机号码">
                         </div>
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="telephone" placeholder="手机号码">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="username" placeholder="用户名">
+                        </div>
+                        <div class="input-group">
+                            <div class="short-input-group">
+                                <input type="text" class="form-control" name="img_captcha" placeholder="图形验证码">
                             </div>
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="username" placeholder="用户名">
+                            <div class="input-group-addon">
+                                <img src="{% url 'cpauth:img_captcha' %}" alt="" class="img-captcha">
                             </div>
-                            <div class="input-group">
-                                <div class="short-input-group">
-                                    <input type="text" class="form-control" name="img_captcha" placeholder="图形验证码">
-                                </div>
-                                <div class="input-group-addon">
-                                    <img src="" alt="">
-                                </div>
+                        </div>
+                        <div class="input-group">
+                            <input type="password" class="form-control" name="password1" placeholder="密码">
+                        </div>
+                        <div class="input-group">
+                            <input type="password" class="form-control" name="password2" placeholder="确认密码">
+                        </div>
+                        <div class="input-group">
+                            <div class="short-input-group">
+                                <input type="text" class="form-control" name="sms_captcha" placeholder="短信验证码">
                             </div>
-                            <div class="input-group">
-                                <input type="password" class="form-control" name="password1" placeholder="密码">
+                            <div class="input-group-addon">
+                                <span class="sms-captcha-btn">发送验证码</span>
                             </div>
-                            <div class="input-group">
-                                <input type="password" class="form-control" name="password2" placeholder="确认密码">
-                            </div>
-                            <div class="input-group">
-                                <div class="short-input-group">
-                                    <input type="text" class="form-control" name="sms_captcha" placeholder="短信验证码">
-                                </div>
-                                <div class="input-group-addon">
-                                    <span class="sms-captcha-btn">发送验证码</span>
-                                </div>
-                            </div>
-                            <div class="input-group">
-                                <input type="submit" class="submit-btn" value="立即注册">
-                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input type="submit" class="submit-btn" value="立即注册">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
