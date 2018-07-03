@@ -21,7 +21,8 @@
         height: 100%;
         // 居中
         margin: 0 auto;
-        overflow: hidden;
+        //上面指定宽高度就不需要overflow
+        //overflow: hidden;
 
         .logo-box {
             width: 140px;
@@ -71,6 +72,7 @@
             line-height: $navHeight;
             height: $navHeight;
             color: #fff;
+            position: relative;
 
             .iconfont {
                 color: #fff;
@@ -82,17 +84,17 @@
             a {
                 color: #fff;
             }
-        }
 
-        .user-more-box {
+            .user-more-box {
                 background: #fff;
                 width: 140px;
-                height: 90px;
+                //height: 90px;
                 position: absolute;
                 box-shadow: 0 3px 4px #ccc;
                 border-radius: 5px;
                 top: 65px;
-                right: 30px;
+                left: 50%;
+                margin-left: -70px;
                 font-size: 14px;
                 z-index: 2;
                 display: none;
@@ -116,5 +118,6 @@
                     line-height: 44px;
                 }
             }
+        }
     }
 }

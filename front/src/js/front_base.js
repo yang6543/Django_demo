@@ -135,6 +135,8 @@ Auth.prototype.listenSmsCaptchaEvent = function () {
         var telephone = telephoneInput.val();
         if(!telephone){
             messageBox.showInfo("请输入手机号码!");
+            // return就不会在没输入手机号走ajax
+            return;
         }
         cpajax.get({
             'url': '/account/sms_captcha/',

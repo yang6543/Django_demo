@@ -31,7 +31,9 @@
                     <a href="#" class="authenticated-box">{{ user.username }}</a>
                     <div class="user-more-box">
                         <i class="triangle"></i>
-                        <a href="#">管理系统</a>
+                        {% if user.is_staff %}
+                            <a href="{% url 'cms:index' %}">管理系统</a>
+                        {% endif %}
                         <a href="{% url 'cpauth:logout' %}">退出登录</a>
                     </div>
                 {% else %}
